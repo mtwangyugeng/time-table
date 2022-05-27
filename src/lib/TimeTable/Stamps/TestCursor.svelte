@@ -34,7 +34,6 @@ import LinkedInSvg from "./svg/LinkedInSVG.svelte";
     }
 
     span :global(svg) {
-        fill: rgb(46, 124, 197);
         width: 30px;
         height: 30px;
     }

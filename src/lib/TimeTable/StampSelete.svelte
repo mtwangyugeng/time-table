@@ -1,6 +1,7 @@
 <script context="module">
     import {writable} from "svelte/store";
-
+import LinkedInSvg from "./Stamps/svg/LinkedInSVG.svelte";
+    export const currStamp = writable(null);
 
 </script>
 
@@ -15,8 +16,10 @@ import TestCursor from "./Stamps/TestCursor.svelte";
         return () => {
             tc = !tc;
         console.log(tc)
+        
         }
     }
+    $: currStamp.set(tc ? LinkedInSvg: null)
     let tc = false;
 </script>
 

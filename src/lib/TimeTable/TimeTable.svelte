@@ -8,6 +8,11 @@ import StampSelete from "./StampSelete.svelte";
                 .fill(null)
                 .map(_ => Array(nRows).fill(null))
 
+    function changeGrids(i, j) {
+        return (componentSVG) => {
+            grids[i][j] = componentSVG;
+        }
+    }
     
 </script>
 
@@ -24,7 +29,9 @@ import StampSelete from "./StampSelete.svelte";
             {#if i === 0}
                 {(j + 1) * CELL_LENGTH}
             {/if}
-            <Grid grid={grid} pos={[i, j]}/>
+            <Grid changeGrids={changeGrids(i, j)}>
+                <svelte:component this={grid} />
+            </Grid>
         </span>
         {/each}
         </div>

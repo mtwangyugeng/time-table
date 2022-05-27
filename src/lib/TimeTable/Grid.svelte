@@ -1,14 +1,19 @@
 <script>
-    export let grid = null;
-    export let pos;
+import { currStamp } from "./StampSelete.svelte";
+
+
+    export let changeGrids;
 
     function handleClick() {
-        
+        changeGrids($currStamp);
     }
+
 </script>
 
 <button on:click={handleClick}>
-    {pos}
+    <span>
+        <slot />
+    </span>
 </button>
 
 
@@ -19,7 +24,21 @@
         background-color: yellow;
         border: 1px solid;
         cursor: inherit;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
+    button :global(svg) {
+        height: 30px;
+        width: 30px;
+       
+    }
+    span :global(svg) {
+        fill: black;
+    }
+
     button:hover {
         background-color: orange;
     }
