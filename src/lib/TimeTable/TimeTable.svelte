@@ -1,7 +1,7 @@
 <script>
 import { CELL_LENGTH, DAYS, WORKING_HOURS } from "./const";
 import Grid from "./Grid.svelte";
-import StampSelete from "./StampSelete.svelte";
+import StampSelete from "./StampSelect.svelte";
 
     const nRows = WORKING_HOURS / CELL_LENGTH
     let grids = Array(Math.ceil(DAYS))
@@ -16,29 +16,31 @@ import StampSelete from "./StampSelete.svelte";
     
 </script>
 
-<div class=Table>
-{#each grids as col,i (i)}
-    <span>
-        <div class=Day>
-            {i + 1}
-        </div>
-
-        <div class=Col>
-        {#each col as grid,j (j)}
+<section>
+    <div class=Table>
+    {#each grids as col,i (i)}
         <span>
-            {#if i === 0}
-                {(j + 1) * CELL_LENGTH}
-            {/if}
-            <Grid changeGrids={changeGrids(i, j)}>
-                <svelte:component this={grid} />
-            </Grid>
+            <div class=Day>
+                {i + 1}
+            </div>
+
+            <div class=Col>
+            {#each col as grid,j (j)}
+            <span>
+                {#if i === 0}
+                    {(j + 1) * CELL_LENGTH}
+                {/if}
+                <Grid changeGrids={changeGrids(i, j)}>
+                    <svelte:component this={grid} />
+                </Grid>
+            </span>
+            {/each}
+            </div>
         </span>
-        {/each}
-        </div>
-    </span>
-{/each}
-</div>
-<StampSelete />
+    {/each}
+    </div>
+    <StampSelete />
+</section>
 
 
 <style>

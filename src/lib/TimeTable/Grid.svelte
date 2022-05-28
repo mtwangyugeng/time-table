@@ -1,5 +1,5 @@
 <script>
-import { currStamp } from "./StampSelete.svelte";
+import { currStamp } from "./StampSelect.svelte";
 
 
     export let changeGrids;
@@ -35,7 +35,7 @@ import { currStamp } from "./StampSelete.svelte";
         width: 30px;
        
     }
-    span :global(svg) {
+    span :global(*) {
         fill: black;
     }
 

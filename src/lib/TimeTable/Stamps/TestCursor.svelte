@@ -24,7 +24,7 @@ import LinkedInSvg from "./svg/LinkedInSVG.svelte";
 <svelte:window on:mousemove={handleMove} on:touchmove={handleMove}/>
 
 <span style="top: {pY}px; left: {pX}px;">
-    <LinkedInSvg />
+    <slot />
 </span>
 
 <style>
