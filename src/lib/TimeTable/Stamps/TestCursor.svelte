@@ -1,5 +1,7 @@
 <script>
     import { onDestroy, onMount } from "svelte";
+import { stamps } from "../const";
+import { currStamp } from "../StampSelect.svelte";
 import LinkedInSvg from "./svg/LinkedInSVG.svelte";
     onMount(()=> {
         document.body.style.cursor = "none";
@@ -24,7 +26,7 @@ import LinkedInSvg from "./svg/LinkedInSVG.svelte";
 <svelte:window on:mousemove={handleMove} on:touchmove={handleMove}/>
 
 <span style="top: {pY}px; left: {pX}px;">
-    <slot />
+    <svelte:component this={stamps[$currStamp]?.svg} />
 </span>
 
 <style>

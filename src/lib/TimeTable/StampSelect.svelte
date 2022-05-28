@@ -1,7 +1,6 @@
 <script context="module">
     import {writable} from "svelte/store";
-import BookSvg from "./Stamps/svg/BookSVG.svelte";
-import LinkedInSvg from "./Stamps/svg/LinkedInSVG.svelte";
+    import { stamps } from "./const";
     export const currStamp = writable(null);
 
 </script>
@@ -12,36 +11,21 @@ import TestCursor from "./Stamps/TestCursor.svelte";
 
     // let stamps = ["cake", "apple", "pink guy"];
 
-    const stamps = [
-        {
-            title: "LinkedIn",
-            svg: LinkedInSvg,
-            description: "Job hunting for 2 hours."
-        }, 
-        {
-            title: "Read",
-            svg: BookSvg,
-            description: "Read for 2hours"
-        }
-    ]
-
-    function changeStamp(stampSVG) {
+    function changeStamp(stampIndex) {
        
         return () => {
-            currStamp.set(stampSVG)
+            currStamp.set(stampIndex)
         
         }
     }
 </script>
 
-{#each stamps as stamp (stamp)}
-    <button on:click={changeStamp(stamp.svg)}> {stamp.title} </button>
+{#each stamps as stamp, i (i)}
+    <button on:click={changeStamp(i)}> {stamp.title} </button>
 {/each}
 
-{#if $currStamp}
-    <TestCursor >
-        <svelte:component this={$currStamp}/>
-    </TestCursor>
+{#if $currStamp !== null}
+    <TestCursor />
 {/if}
 
 

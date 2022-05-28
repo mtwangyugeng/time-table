@@ -1,5 +1,5 @@
 <script>
-import { CELL_LENGTH, DAYS, WORKING_HOURS } from "./const";
+import { CELL_LENGTH, DAYS, stamps, WORKING_HOURS } from "./const";
 import Grid from "./Grid.svelte";
 import StampSelete from "./StampSelect.svelte";
 
@@ -31,7 +31,7 @@ import StampSelete from "./StampSelect.svelte";
                     {(j + 1) * CELL_LENGTH}
                 {/if}
                 <Grid changeGrids={changeGrids(i, j)}>
-                    <svelte:component this={grid} />
+                    <svelte:component this={stamps[grid]?.svg} />
                 </Grid>
             </span>
             {/each}
